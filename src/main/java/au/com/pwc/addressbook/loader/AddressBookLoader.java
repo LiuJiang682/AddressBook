@@ -37,7 +37,7 @@ public class AddressBookLoader {
 					String fileName = filePath.toString();
 					AddressBookFile addressBookFile = addressBookFileFactory.create(fileName);
 					int index = fileName.lastIndexOf(Strings.FILE_PATH_SEPARATOR);
-					String shortfileName = fileName.substring(index);
+					String shortfileName = fileName.substring(++index);
 					addressBooks.putIfAbsent(shortfileName, addressBookFile);
 				});
 		} catch (IOException e) {

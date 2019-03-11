@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import au.com.pwc.addressbook.AddressBook;
 import au.com.pwc.addressbook.comparator.ContactComparator;
 import au.com.pwc.addressbook.constants.Constants.Numeric;
+import au.com.pwc.addressbook.constants.Constants.Strings;
 import au.com.pwc.addressbook.file.AddressBookFile;
 
 public class PrintCommand implements Command {
