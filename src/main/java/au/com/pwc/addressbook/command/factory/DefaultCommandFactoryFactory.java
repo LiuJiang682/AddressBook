@@ -19,6 +19,7 @@ public class DefaultCommandFactoryFactory implements CommandFactoryFactory {
 		factories = new HashMap<>();
 		factories.put(CommandEnum.ADD.name(), new AddCommandFactory());
 		factories.put(CommandEnum.PRINT.name(), new PrintCommandFactory());
+		factories.put(CommandEnum.IMPORT.name(), new ImportCommandFactory());
 	}
 
 	public Command getNextCommand() {
@@ -46,6 +47,9 @@ public class DefaultCommandFactoryFactory implements CommandFactoryFactory {
 				break;
 			case PRINT:
 				commandFactory = factories.get(CommandEnum.PRINT.name());
+				break;
+			case IMPORT:
+				commandFactory = factories.get(CommandEnum.IMPORT.name());
 				break;
 			default:
 				command = new DoNothingCommand();

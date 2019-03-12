@@ -16,6 +16,8 @@ public enum CommandEnum {
 				return ADD;
 			} else if (string.trim().toUpperCase().startsWith(PRINT.toString())) {
 				return PRINT;
+			} else if(string.trim().toUpperCase().startsWith(IMPORT.toString())) {
+				return IMPORT;
 			}
 		}
 		return DONOTHING;

@@ -19,10 +19,6 @@ public class PrintCommand implements Command {
 	
 	private static final Logger LOGGER = Logger.getLogger(PrintCommand.class);
 	
-	private static final long MAX_SIZE = 2147483648l; //2 GB
-
-	private static final String SPACE = " ";
-	
 	private final String userEntered;
 	
 	public PrintCommand(final String userEntered) {
@@ -32,8 +28,8 @@ public class PrintCommand implements Command {
 	@Override
 	public void execute(AddressBook addressBook) {
 		AddressBookFile addressBookFile = null;
-		if (userEntered.contains(SPACE)){
-			String[] params = userEntered.split(SPACE);
+		if (userEntered.contains(Strings.SPACE)){
+			String[] params = userEntered.split(Strings.SPACE);
 			addressBookFile = addressBook.getAddressBookFile(params[Numeric.ONE]);
 		} else {
 			addressBookFile = addressBook.getDefaultFile();
@@ -43,7 +39,7 @@ public class PrintCommand implements Command {
 		try {
 			Path path = Paths.get(addressBookFile.getName());
 			long size = Files.size(path);
-			if (size < MAX_SIZE) {
+			if (size < Numeric.MAX_SIZE) {
 				List<String> contentLines = Files.readAllLines(path);
 				TreeSet<String> contacts = new TreeSet(new ContactComparator());
 				contacts.addAll(contentLines);

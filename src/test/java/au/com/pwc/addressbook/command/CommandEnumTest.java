@@ -19,19 +19,27 @@ public class CommandEnumTest {
 		assertThat(CommandEnum.fromString(null), is(equalTo(CommandEnum.DONOTHING)));
 		assertThat(CommandEnum.fromString(""), is(equalTo(CommandEnum.DONOTHING)));
 		assertThat(CommandEnum.fromString("abc"), is(equalTo(CommandEnum.DONOTHING)));
-		
-//		assertThat(CommandEnum.fromString("Move"), is(equalTo(CommandEnum.MOVE)));
-//		assertThat(CommandEnum.fromString("LEFT"), is(equalTo(CommandEnum.LEFT)));
-//		assertThat(CommandEnum.fromString("Report"), is(equalTo(CommandEnum.REPORT)));
-//		assertThat(CommandEnum.fromString("right"), is(equalTo(CommandEnum.RIGHT)));
 	}
 	
 	@Test
-	public void whenPlaceStringEnteredThenPlaceCommandEnumReturn() {
+	public void whenAddStringEnteredThenPlaceCommandEnumReturn() {
 		assertThat(CommandEnum.fromString("add"), is(equalTo(CommandEnum.ADD)));
 		assertThat(CommandEnum.fromString("ADD Paul,123456"),
 				is(equalTo(CommandEnum.ADD)));
 		assertThat(CommandEnum.fromString("ADD addressBook1,Paul,123456"),
 				is(equalTo(CommandEnum.ADD)));
+	}
+	
+	@Test
+	public void shouldReturnPrintCommandWhenPrintStringProvided() {
+		assertThat(CommandEnum.fromString("print"), is(equalTo(CommandEnum.PRINT)));
+		assertThat(CommandEnum.fromString("Print address1"), is(equalTo(CommandEnum.PRINT)));
+	}
+	
+	@Test
+	public void shouldReturnImportCommandWhenImportStringProvided() {
+		assertThat(CommandEnum.fromString("import"), is(equalTo(CommandEnum.IMPORT)));
+		assertThat(CommandEnum.fromString("import addressBook2"), is(equalTo(CommandEnum.IMPORT)));
+		assertThat(CommandEnum.fromString("import ~/addressBook2"), is(equalTo(CommandEnum.IMPORT)));
 	}
 }

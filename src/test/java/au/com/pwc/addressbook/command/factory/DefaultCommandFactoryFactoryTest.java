@@ -16,6 +16,7 @@ import org.powermock.reflect.Whitebox;
 import au.com.pwc.addressbook.command.AddCommand;
 import au.com.pwc.addressbook.command.Command;
 import au.com.pwc.addressbook.command.DoNothingCommand;
+import au.com.pwc.addressbook.command.ImportCommand;
 import au.com.pwc.addressbook.command.PrintCommand;
 
 public class DefaultCommandFactoryFactoryTest {
@@ -96,7 +97,7 @@ private DefaultCommandFactoryFactory defaultCommandFactoryFactory;
 	/**
 	 * Given the user enter the Print command string
 	 * When the doCommandConstruct method called
-	 * Then the Add command object should return
+	 * Then the Print command object should return
 	 */
 	@Test
 	public void whenPrintCommandEnteredThenDoCommandConstructShouldReturnPrintCommand() {
@@ -106,6 +107,21 @@ private DefaultCommandFactoryFactory defaultCommandFactoryFactory;
 		Command command = defaultCommandFactoryFactory.constructCommand(userEntered);
 		//Then the Place command object should return
 		assertThat(command, is(instanceOf(PrintCommand.class)));
+	}
+	
+	/**
+	 * Given the user enter the Import command string
+	 * When the doCommandConstruct method called
+	 * Then the Import command object should return
+	 */
+	@Test
+	public void whenImportCommandEnteredThenDoCommandConstructShouldReturnImportCommand() {
+		//Given the user enter the PLACE command string
+		String userEntered = "Import abc";
+		//When the doCommandConstruct method called
+		Command command = defaultCommandFactoryFactory.constructCommand(userEntered);
+		//Then the Place command object should return
+		assertThat(command, is(instanceOf(ImportCommand.class)));
 	}
 	
 	/**
@@ -120,6 +136,6 @@ private DefaultCommandFactoryFactory defaultCommandFactoryFactory;
 		//Then
 		Map<String, CommandFactory> factories = Whitebox.getInternalState(defaultCommandFactoryFactory, "factories");
 		assertThat(factories, is(notNullValue()));
-		assertThat(factories.size(), is(equalTo(2)));
+		assertThat(factories.size(), is(equalTo(3)));
 	}
 }
