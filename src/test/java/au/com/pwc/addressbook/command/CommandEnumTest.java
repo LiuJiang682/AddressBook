@@ -42,4 +42,9 @@ public class CommandEnumTest {
 		assertThat(CommandEnum.fromString("import addressBook2"), is(equalTo(CommandEnum.IMPORT)));
 		assertThat(CommandEnum.fromString("import ~/addressBook2"), is(equalTo(CommandEnum.IMPORT)));
 	}
+	
+	@Test
+	public void shouldReturnUnionCommandWhenUnionStringProvided() {
+		assertThat(CommandEnum.fromString("default\\addressBook2"), is(equalTo(CommandEnum.UNION)));
+	}
 }

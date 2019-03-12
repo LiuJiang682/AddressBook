@@ -20,6 +20,7 @@ public class DefaultCommandFactoryFactory implements CommandFactoryFactory {
 		factories.put(CommandEnum.ADD.name(), new AddCommandFactory());
 		factories.put(CommandEnum.PRINT.name(), new PrintCommandFactory());
 		factories.put(CommandEnum.IMPORT.name(), new ImportCommandFactory());
+		factories.put(CommandEnum.UNION.name(), new UnionCommandFactory());
 	}
 
 	public Command getNextCommand() {
@@ -50,6 +51,9 @@ public class DefaultCommandFactoryFactory implements CommandFactoryFactory {
 				break;
 			case IMPORT:
 				commandFactory = factories.get(CommandEnum.IMPORT.name());
+				break;
+			case UNION:
+				commandFactory = factories.get(CommandEnum.UNION.name());
 				break;
 			default:
 				command = new DoNothingCommand();

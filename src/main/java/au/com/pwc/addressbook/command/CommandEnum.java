@@ -2,6 +2,9 @@ package au.com.pwc.addressbook.command;
 
 import org.apache.commons.lang3.StringUtils;
 
+import au.com.pwc.addressbook.constants.Constants.Numeric;
+import au.com.pwc.addressbook.constants.Constants.Strings;
+
 public enum CommandEnum {
 
 	ADD,
@@ -18,6 +21,8 @@ public enum CommandEnum {
 				return PRINT;
 			} else if(string.trim().toUpperCase().startsWith(IMPORT.toString())) {
 				return IMPORT;
+			} else if (Numeric.ONE == StringUtils.countMatches(string, Strings.BACK_SLASH)) {
+				return UNION;
 			}
 		}
 		return DONOTHING;

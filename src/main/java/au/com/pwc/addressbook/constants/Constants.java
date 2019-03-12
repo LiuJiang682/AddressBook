@@ -9,7 +9,7 @@ public interface Constants {
 		static final String FILE_PATH_SEPARATOR = System.getProperty("file.separator");
 		static final String DEFAULT = "default";
 		static final String SPACE = " ";
-		
+		static final String BACK_SLASH = "\\";
 	}
 	
 	interface Numeric {

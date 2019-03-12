@@ -17,7 +17,6 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import au.com.pwc.addressbook.AddressBook;
 import au.com.pwc.addressbook.command.helper.ContactImportHelper;
-import au.com.pwc.addressbook.command.helper.ContactImportHelperTest;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ImportCommand.class})

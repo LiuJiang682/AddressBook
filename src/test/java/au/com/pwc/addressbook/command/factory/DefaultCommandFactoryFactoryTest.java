@@ -18,6 +18,7 @@ import au.com.pwc.addressbook.command.Command;
 import au.com.pwc.addressbook.command.DoNothingCommand;
 import au.com.pwc.addressbook.command.ImportCommand;
 import au.com.pwc.addressbook.command.PrintCommand;
+import au.com.pwc.addressbook.command.UnionCommand;
 
 public class DefaultCommandFactoryFactoryTest {
 
@@ -125,6 +126,21 @@ private DefaultCommandFactoryFactory defaultCommandFactoryFactory;
 	}
 	
 	/**
+	 * Given the user enter the \ command string
+	 * When the doCommandConstruct method called
+	 * Then the Union command object should return
+	 */
+	@Test
+	public void whenUnionCommandEnteredThenDoCommandConstructShouldReturnUnionCommand() {
+		//Given the user enter the PLACE command string
+		String userEntered = "default\\abc";
+		//When the doCommandConstruct method called
+		Command command = defaultCommandFactoryFactory.constructCommand(userEntered);
+		//Then the Place command object should return
+		assertThat(command, is(instanceOf(UnionCommand.class)));
+	}
+	
+	/**
 	 * Given the user can access the DefaultCommandFactoryFactory class
 	 * When the constructor is called
 	 * Then the factories map should populated
@@ -136,6 +152,6 @@ private DefaultCommandFactoryFactory defaultCommandFactoryFactory;
 		//Then
 		Map<String, CommandFactory> factories = Whitebox.getInternalState(defaultCommandFactoryFactory, "factories");
 		assertThat(factories, is(notNullValue()));
-		assertThat(factories.size(), is(equalTo(3)));
+		assertThat(factories.size(), is(equalTo(4)));
 	}
 }
